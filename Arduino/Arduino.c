@@ -218,61 +218,209 @@ void loop()
     delay(150); //to slow it down and make it easier to debug. also makes the paddle lag       	
 }
 
-//WRITE YOUR FUNCTION IMPLEMENTATIONS BELOW 
+//WRITE YOUR FUNCTION IMPLEMENTATIONS BELOW
 
-Board();
-int getPaddlePos();
-void setPaddlePos(int input);
-int getLives();
-void setLives(int input);
-int getLevel();
-void setLevel(int input);
-int getBallRow();
-void setBallRow(int input);
-int getBallCol();
-void setBallCol(int input);
-boolean getBallLeft();
-void setBallLeft(boolean input);
-boolean getBallRight();
-void setBallRight(boolean input);
-boolean getBallDown();
-void setBallDown(boolean input);
-int getPaddleHeight();
-void resetPause();
-void setPause();
-boolean getPaused();
-void initBoard();
-void displayBlocks();
-void updateBall();
-boolean lostBall();
-void hitWall();
-void hitPaddle( );
-void hitBlock();
-boolean levelComplete();
-void initStrength();
+Board::Board(){
+    setPaddlePos(0);
+    setLevel(0);
+    setLives(3);
+    paddleHeight = 7;
+    ballLeft = true;
+    paused = true;
+};
 
+int Board::getPaddlePos(){
+    return PaddlePos;
+}
 
+void Board::setPaddlePos(int input){
+    paddlePos = input;
+}
 
+int Board::getLives(){
+    return lives;
+}
 
+void Board::setLives(int input){
+    lives = input;
+}
 
+int Board::getLevel(){
+    return level;
+}
 
+void Board::setLevel(int input){
+    level = input;
+}
 
+int Board::getBallRow(){
+    return ballRow;
+}
 
+void Board::setBallRow(int input){
+    ballRow = input;
+}
 
+int Board::getBallCol(){
+    return ballCol;
+}
 
+void Board::setBallCol(int input){
+    ballCol = input;
+}
 
+boolean Board::getBallLeft(){
+    return ballLeft;
+}
 
+void Board::setBallLeft(boolean input){
+    ballLeft = input;
+}
 
+boolean Board::getBallRight(){
+    return ballRight;
+}
 
+void Board::setBallRight(boolean input){
+    ballRight = input;
+}
 
+boolean Board::getBallDown(){
+    return ballDown;
+}
 
+void Board::setBallDown(boolean input){
+    ballDown = input;
+}
 
+int Board::getPaddleHeight(){
+    return paddleHeight;
+}
 
+void Board::resetPause(){
+    paused = false;
+}
 
+void Board::setPause(){
+    paused = true;
+}
 
+boolean Board::getPaused(){
+    return paused;
+}
 
-
-
+void Board::initBoard(){
+    ballRow = 3;
+    ballCol = 14;
+    ballRight = true;
+    ballDown = false;
+    
+    if (level == 1){
+        for (int i = 0; i < 8; i++){
+            strength[i][0] = 1
+        }
+        else if (level == 2){
+            for (int i = 0; i < 8; i++){
+                strenght[i][0] = 1;
+                strength[i][1] = 1;
+            }
+            else if (level == 3){
+                for (int i = 0; i < 8; i++){
+                    strenght[i][0] = 2;
+                    strength[i][1] = 1;
+                }
+                else if (level == 4){
+                    for (int i = 0; i < 8; i++){
+                        strenght[i][0] = 3;
+                        strength[i][1] = 2;
+                        strength[i][2] = 1;
+                    }
+                    else if (level == 5){
+                        for (int i = 0; i < 8; i++){
+                            strenght[i][0] = 3;
+                            strength[i][1] = 0;
+                            strength[i][2] = 2;
+                            strength[i][9] = 1;
+                            strength[i][10] = 1;
+                        }
+                    }
+                    
+                    void Board::displayBlocks(){
+                        for (int i = 0; i < 8; i++){
+                            for (int j = 0; j < 16; j++){
+                                if (strength[i][j] > 0){
+                                    %DISPLAY BLOCK!!!!!!!!!!!
+                                }
+                            }
+                        }
+                    }
+                    
+                    void updateBall(){
+                        if ballLeft
+                            ballRow = ballRow - 1;
+                        
+                        if ballRight
+                            ballRow = ballRow + 1;
+                        
+                        if ballDown
+                            ballCol = ballCol + 1;
+                        else
+                            ballCol = ballCol - 1;
+                        
+                        if (ballDown && ballRow < 0){
+                            ballRow = ballRow + 2;
+                        }
+                        else if (ballDown && ballRow > 15){
+                            ballRow = ballRow - 2;
+                        }
+                        else if (!ballDown && ballRow < 0){
+                            ballRow = ballRow + 2;
+                        }
+                        else if (!ballDown && ballRow > 15){
+                            ballRow = ballRow - 2;
+                        }
+                        else if (ballDown < 0){
+                            ballCol = ballCol + 2;
+                        }
+                    }
+                    
+                    boolean lostBal(){
+                        if (ballCol > 15){
+                            return true;
+                            else
+                                return false;
+                        }
+                    }
+                    
+                    void hitWall(){
+                        if (ballRow < 0){
+                            ballLeft = false;
+                            ballRight = true;
+                        }
+                        else if (ballRow > 15){
+                            ballLeft = true;
+                            ballRight = false;
+                        }
+                        else if (ballDown < 0){
+                            ballDown = true;
+                        }
+                    }
+                    
+                    void hitPaddle(){
+                        if ballCol == 6 || ballCol == 
+                            
+                            }
+                    
+                    boolean levelComplete(){
+                        count = 0;
+                        for (int i = 0; i < 8; i++){
+                            for (int j = 0; j < 16; j++){
+                                if (strength[i][j] == 0){
+                                    count = count + 1;
+                                }
+                            }
+                        }
+                        if count =
 
 
 
